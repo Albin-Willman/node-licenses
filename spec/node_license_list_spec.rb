@@ -5,7 +5,17 @@ describe NodeLicenseList do
     expect(NodeLicenseList::VERSION).not_to be nil
   end
 
-  it 'does something useful' do
-    expect(false).to eq(true)
+  it 'raises an error if no node modules is present' do
+    Dir.chdir 'test_no_modules' do
+      expect {
+        NodeLicenseList::Main.run
+        }.to raise_error('No node modules')
+    end
+  end
+
+  it 'raises no error if node modules is present' do
+    Dir.chdir 'test_with_modules' do
+      NodeLicenseList::Main.run
+    end
   end
 end

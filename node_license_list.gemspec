@@ -6,7 +6,7 @@ require 'node_license_list/version'
 Gem::Specification.new do |spec|
   spec.name          = "node_license_list"
   spec.version       = NodeLicenseList::VERSION
-  spec.authors       = ["Albin"]
+  spec.authors       = ["Albin Willman"]
   spec.email         = ["j.albin.willman@gmail.com"]
 
   spec.summary       = 'A gem that parses node dependencies.'
