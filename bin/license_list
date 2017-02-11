@@ -2,4 +2,6 @@
 
 require 'node_license_list'
 
-NodeLicenseList::Main.run
+verbose = ARGV.include?('--verbose') || ARGV.include?('-v')
+
+NodeLicenseList::Main.run(verbose)

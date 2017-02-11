@@ -1,8 +1,8 @@
 module NodeLicenseList
   class Package
-    attr_accessor :name, :license
-    def initialize(name, license)
-      @name, @license = name, license
+    attr_accessor :name, :license, :path
+    def initialize(name, license, path)
+      @name, @license, @path = name, license, path
     end
   end
 end

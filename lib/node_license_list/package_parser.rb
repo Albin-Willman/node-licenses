@@ -3,19 +3,26 @@ require 'json'
 module NodeLicenseList
   class PackageParser
     def self.run(path = '')
-      data = parse_package_json(path)
-
-      data
+      parse_package_json(path)
     end
 
     private
     def self.parse_package_json(path)
-      puts path
       json_path = "#{path}/package.json"
-      puts json_path
       return unless File.file?(json_path)
       json = JSON.parse(File.read(json_path))
-      Package.new(json['name'], json['license'])
+      Package.new(json['name'], license(json['license'], path).downcase, path)
+    end
+
+    def self.license(info, path)
+      return parse_license_file(path) unless info
+      return info if info.is_a?(String)
+      return info.join(', ') if info.is_a?(Array)
+      info['type']
+    end
+
+    def self.parse_license_file(path)
+      nil # TODO: parse license file for info if no other option is open
     end
   end
 end

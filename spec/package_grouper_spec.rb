@@ -3,9 +3,9 @@ require 'spec_helper'
 describe NodeLicenseList::PackageGrouper do
   it 'It returns a hash' do
     list = [
-      NodeLicenseList::Package.new('test1', 'mit'),
-      NodeLicenseList::Package.new('test2', 'mit'),
-      NodeLicenseList::Package.new('test3', 'apache')
+      NodeLicenseList::Package.new('test1', 'mit', ''),
+      NodeLicenseList::Package.new('test2', 'mit', ''),
+      NodeLicenseList::Package.new('test3', 'apache', '')
     ]
     expected = {
       'mit' => ['test1', 'test2'],
