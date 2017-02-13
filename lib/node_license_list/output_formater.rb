@@ -25,6 +25,7 @@ module NodeLicenseList
       case LicenseClassifier.safety_level(license)
       when :copyleft then return :red
       when :open then return :green
+      when :guess then return :blue
       else
         return :yellow
       end

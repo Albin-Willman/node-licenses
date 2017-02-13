@@ -24,6 +24,7 @@ module NodeLicenseList
         return :copyleft if license.include?(type)
       end
       return :open if OPEN_LICENSES.include?(license)
+      return :guess if license.start_with?('probably')
       :unknown
     end
   end

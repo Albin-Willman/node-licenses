@@ -1,8 +1,23 @@
 #!/usr/bin/env ruby
 
 require 'node_license_list'
+opts = {}
+opts[:verbose] = ARGV.include?('--verbose') || ARGV.include?('-v')
 
-verbose = ARGV.include?('--verbose') || ARGV.include?('-v')
-puts "hej #{verbose}"
+def find_output_path(args)
+  args.each do |arg|
+    next unless arg.start_with?('output=')
+    return arg.split('=')[1..-1].join('=')
+  end
+  nil
+end
 
-NodeLicenseList::Main.run(verbose)
+cmd = NodeLicenseList::Main
+if ARGV.include?('--export')
+  cmd = NodeLicenseList::Export
+  opts[:output] = find_output_path(ARGV)
+elsif ARGV.include?('--help')
+  cmd = NodeLicenseList::ConsoleHelp
+end
+
+cmd.run(opts)
