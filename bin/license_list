@@ -3,5 +3,6 @@
 require 'node_license_list'
 
 verbose = ARGV.include?('--verbose') || ARGV.include?('-v')
+puts "hej #{verbose}"
 
 NodeLicenseList::Main.run(verbose)

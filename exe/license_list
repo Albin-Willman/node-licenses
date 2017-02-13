@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby
-
-require 'node_license_list'
-
-NodeLicenseList::Main.run

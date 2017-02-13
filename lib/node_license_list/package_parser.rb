@@ -22,7 +22,7 @@ module NodeLicenseList
     end
 
     def self.parse_license_file(path)
-      nil # TODO: parse license file for info if no other option is open
+      'unknown' # TODO: parse license file for info if no other option is open
     end
   end
 end

@@ -1,8 +1,12 @@
 module NodeLicenseList
   class LicenseClassifier
-    SAFE_LICENSES = [
+    OPEN_LICENSES = [
       'mit',
-      'isc'
+      'isc',
+      'apache-2.0',
+      'mit license',
+      'bsd',
+      'public domain'
     ]
     COPYLEFT_LICENSES = [
       'mechanical',
@@ -19,7 +23,7 @@ module NodeLicenseList
       COPYLEFT_LICENSES.each do |type|
         return :copyleft if license.include?(type)
       end
-      return :open if SAFE_LICENSES.include?(license)
+      return :open if OPEN_LICENSES.include?(license)
       :unknown
     end
   end
