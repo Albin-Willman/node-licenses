@@ -7,6 +7,7 @@ opts[:verbose] = ARGV.include?('--verbose') || ARGV.include?('-v')
 def find_output_path(args)
   args.each do |arg|
     next unless arg.start_with?('output=')
+    puts "#{arg} #{arg.split('=')[1..-1].join('=')}"
     return arg.split('=')[1..-1].join('=')
   end
   nil
@@ -16,6 +17,7 @@ cmd = NodeLicenseList::Main
 if ARGV.include?('--export')
   cmd = NodeLicenseList::Export
   opts[:output] = find_output_path(ARGV)
+  puts opts
 elsif ARGV.include?('--help')
   cmd = NodeLicenseList::ConsoleHelp
 end
